@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {FeedRetreiverService} from './services/feed-retreiver.service';
+import {MomentModule} from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -15,7 +16,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MomentModule
   ],
   providers: [FeedRetreiverService],
   bootstrap: [AppComponent]

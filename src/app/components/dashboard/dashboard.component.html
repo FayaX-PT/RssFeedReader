@@ -1,18 +1,25 @@
- <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-
-        <div class="col-md-4" *ngFor="let entry of feed?.entries">
-          <h2>{{entry.title}}</h2>
-          <p>{{entry.contentSnippet}}</p>
-          <p>{{entry.publishedDate | date: 'dd/MM/yyyy - hh:mm'}}</p>
-          <p><a class="btn btn-secondary"  target="new" href="{{entry.link}}" role="button">Open article &raquo;</a></p>
+<div class="container">
+  <!-- Example row of columns -->
+    <div class = "card-deck-wrapper" *ngFor="let group of groupFeed">
+      <div class = "card-deck">
+        <div class="card " *ngFor="let entry of group" >
+          <img class="card-img-top" [src]="getImageUrl(entry.content)" alt="Card image cap" style="width:100%">
+          <div class="card-block">
+            <h4 class="card-title">{{entry.title}}</h4>
+            <p class="card-text">{{entry.contentSnippet}}</p>
+            <p class="card-text"><small class="text-muted">{{entry.author}} - {{entry.publishedDate | amTimeAgo:true}} ago</small></p>
+            <a target="new" href="{{entry.link}}" class="card-link">Open</a>
+          </div>
         </div>
-      </div>
+    </div>
+  </div>
 
-      <hr>
+  <hr>
 
-      <footer>
-        <p>&copy; Nuno Laúdo 2016</p>
-      </footer>
-    </div> <!-- /container -->
+  <footer>
+    <p>&copy; Nuno Laúdo 2016</p>
+  </footer>
+</div>
+<!-- /container -->
+<!-- [ngClass]="{ 'card-deck-wrapper' : index === 0 || index % 3 === 0}" -->
+<!-- [ngClass]="{ 'card-deck-wrapper' : index === 0 || index % 3 === 0}" -->

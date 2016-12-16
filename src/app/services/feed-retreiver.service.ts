@@ -7,9 +7,21 @@ import { Feed } from '../models/feed';
 export class FeedRetreiverService {
   constructor(private http: Http) { }
 
-  url: string = 'https://4gnews.pt/feed/';
+  private feedsUrl = [
+    'https://pplware.sapo.pt/feed/',
+    'https://4gnews.pt/feed/',
+    'http://feed.androidauthority.com/'
+  ];
 
   getFeeds() {
-    return this.http.get('http://demos.angular-craft.com/rss_service.php?url=' + this.url).map(res => <Feed>res.json().responseData.feed);
+    let data : Observable<Feed>[] = [];
+    for (let url of this.feedsUrl) {
+      data.push(this.http.get('http://demos.angular-craft.com/rss_service.php?url=' + url).map(res => <Feed>res.json().responseData.feed));
+    }
+    return data;
+  }
+
+  getNumberOfFeedsAvaliable(){
+    return this.feedsUrl.length;
   }
 }
