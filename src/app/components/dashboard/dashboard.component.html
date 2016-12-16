@@ -2,7 +2,7 @@
       <!-- Example row of columns -->
       <div class="row">
 
-        <div class="col-md-4" *ngFor="let entry of data?.entries">
+        <div class="col-md-4" *ngFor="let entry of feed?.entries">
           <h2>{{entry.title}}</h2>
           <p>{{entry.contentSnippet}}</p>
           <p>{{entry.publishedDate | date: 'dd/MM/yyyy - hh:mm'}}</p>
